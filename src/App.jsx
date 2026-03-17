@@ -175,7 +175,19 @@ const Navbar = ({ dark, onToggle, onPay, onNav }) => (
 /* ── HERO ── */
 const Hero = ({ onPay }) => (
   <section className="grid-bg" style={{ minHeight:"90vh", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"80px 32px", position:"relative", overflow:"hidden" }}>
-    <div style={{ position:"absolute", top:"20%", left:"50%", transform:"translate(-50%,-50%)", width:700, height:500, background:"radial-gradient(ellipse, rgba(67,97,238,0.10) 0%, transparent 70%)", pointerEvents:"none" }}/>
+    <div style={{ position:"absolute", top:0, left:0, width:"100%", height:"100%", zIndex:0, overflow:"hidden", pointerEvents:"none", opacity:0.15, mixBlendMode:"screen" }}>
+      {/* Container slightly scaled and shifted to hide any potential YouTube borders/titles that squeak through */}
+      <div style={{ position:"absolute", top:"50%", left:"50%", transform:"translate(-50%, -50%) scale(1.1)", width:"100%", height:"100%" }}>
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/Ps-0f0K6izM?autoplay=1&mute=1&loop=1&playlist=Ps-0f0K6izM&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&playsinline=1&fs=0&color=white&widget_referrer=test"
+          title="BetterUPI Demo"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          style={{ width:"100vw", height:"56.25vw", minHeight:"100vh", minWidth:"177.77vh", position:"absolute", top:"40%", left:"50%", transform:"translate(-50%, -50%)", border:"none", pointerEvents:"none" }}
+        />
+      </div>
+    </div>
+    <div style={{ position:"absolute", top:"20%", left:"50%", transform:"translate(-50%,-50%)", width:700, height:500, background:"radial-gradient(ellipse, rgba(67,97,238,0.10) 0%, transparent 70%)", pointerEvents:"none", zIndex:0 }}/>
 
     <motion.div initial={{ opacity:0, y:28 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.7 }} style={{ textAlign:"center", maxWidth:820, zIndex:1 }}>
       <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(67,97,238,0.08)", border:"1px solid var(--border2)", borderRadius:100, padding:"5px 17px", marginBottom:32, fontFamily:"var(--mono)", fontSize:11, color:"var(--blue)", letterSpacing:"0.08em" }}>
