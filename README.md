@@ -1,17 +1,65 @@
-# React + Vite
+# BetterUPI 💸
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, fast, and secure web application designed to reimagine the unified payments experience. 
 
-Currently, two official plugins are available:
+BetterUPI aims to provide a cleaner, more intuitive interface for managing transactions, scanning QR codes, keeping track of history, and handling digital payments seamlessly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- **Blazing Fast Performance**: Built with React and Vite for a highly responsive user experience.
+- **Modern UI/UX**: A clean, premium design tailored for simplicity and ease of use.
+- **Secure Architecture**: Designed with best practices to ensure transaction data remains safe.
+- **Responsive Design**: Works perfectly across desktop and mobile devices.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+Follow these steps to set up the project locally.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# betterupi
+### Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/arj-co/betterupi.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd betterupi
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running Locally
+
+To start the development server, run:
+
+```bash
+npm run dev
+```
+
+Your app will be running at `http://localhost:5173/`.
+
+### Building for Production
+
+To create a production build, run:
+
+```bash
+npm run build
+```
+
+This will generate a `dist` folder containing the optimized production build.
+
+## 🛠 Technologies Used
+
+- **React** for building the dynamic user interface.
+- **Vite** for lightning-fast development and optimized build processes.
+- **Vanilla CSS** for robust, flexible, and dependency-free styling.
+
+## 📄 License
+
+This project is licensed under the MIT License.
