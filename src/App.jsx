@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import coinSoundUrl from "./assets/Coin Payment Online Shop Notification 3.wav";
+
+const playCoinSound = () => {
+  const audio = new Audio(coinSoundUrl);
+  audio.play().catch(e => console.log("Audio play prevented:", e));
+};
 
 const GlobalStyle = () => (
   <style>{`
@@ -578,7 +584,7 @@ const DemoPage = ({ onBack }) => {
       timestamp: fmtTime(), processor: "Razorpay Gateway (simulated)", rail: "SWIFT ACH Bridge"
     };
     setResult(res); setLog(p => [res, ...p]);
-    if (ok) { setStage("merchant"); await sleep(1900); setStage("success"); }
+    if (ok) { setStage("merchant"); await sleep(1900); setStage("success"); playCoinSound(); }
     else { setStage("checkout"); setAIStep(-1); alert("Payment declined (simulated). Please try again."); }
   };
   const reset = () => { setStage("checkout"); setAIStep(-1); setResult(null); };
@@ -818,6 +824,10 @@ export default function App() {
   const [page, setPage] = useState("landing");
 
   useEffect(() => { document.body.className = dark ? "dark" : "light"; }, [dark]);
+
+  useEffect(() => {
+    playCoinSound();
+  }, []);
 
   const goDemo = () => { setPage("demo"); window.scrollTo({ top: 0, behavior: "smooth" }); };
   const handleNav = label => {
