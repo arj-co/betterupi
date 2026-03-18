@@ -122,7 +122,7 @@ const NoteFlip = () => {
                 {isRupee ? "₹500" : "$6"}
               </div>
               <div style={{ fontFamily: "var(--mono)", fontSize: 9, color: "rgba(255,255,255,0.55)", letterSpacing: "0.08em" }}>
-                {isRupee ? "RUPEE NOTE" : "USD NOTE"}
+                {isRupee ? "RUPEE NOTE" : "USD"}
               </div>
             </div>
             <div style={{ fontFamily: "var(--mono)", fontWeight: 800, fontSize: 28, color: "rgba(255,255,255,0.18)" }}>
@@ -577,7 +577,7 @@ const DemoPage = ({ onBack }) => {
     setStage("ai"); setAIStep(0);
     for (let i = 1; i <= AI_STEPS.length; i++) { await sleep(600 + Math.random() * 380); setAIStep(i); }
     await sleep(450);
-    const ok = Math.random() > 0.07;
+    const ok = true;
     const res = {
       success: ok, txnId: fakeId(), amtINR: inr, amtUSD: +(inr / USD_INR).toFixed(2), fxRate: USD_INR,
       ai: { risk_score: +(Math.random() * 0.22).toFixed(3), route: "card_rail", fraud_check: "passed", latency_ms: 47 + Math.floor(Math.random() * 30) },
