@@ -122,7 +122,7 @@ const NoteFlip = () => {
                 {isRupee ? "₹500" : "$6"}
               </div>
               <div style={{ fontFamily: "var(--mono)", fontSize: 9, color: "rgba(255,255,255,0.55)", letterSpacing: "0.08em" }}>
-                {isRupee ? "RUPEE NOTE" : "USD"}
+                {isRupee ? "RUPEE" : "USD"}
               </div>
             </div>
             <div style={{ fontFamily: "var(--mono)", fontWeight: 800, fontSize: 28, color: "rgba(255,255,255,0.18)" }}>
