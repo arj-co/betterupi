@@ -258,7 +258,7 @@ const ProblemSolution = () => (
         <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--green)", letterSpacing: "0.1em", marginBottom: 14 }}>THE SOLUTION</div>
         <h2 style={{ fontFamily: "var(--font)", fontWeight: 800, fontSize: 34, lineHeight: 1.15, letterSpacing: "-0.03em", marginBottom: 16, color: "var(--text)" }}>BetterUPI <span className="grad-text">bridges the gap</span></h2>
         <p style={{ fontFamily: "var(--font)", color: "var(--text2)", lineHeight: 1.75, marginBottom: 18, fontSize: 15 }}>We sit between payer and merchant — accepting UPI on one side, settling in local currency on the other. An agentic AI layer handles routing, fraud, and FX in milliseconds.</p>
-        {["Accept UPI from any Indian bank", "AI-powered FX at interbank rates", "Sub-2-second global settlement", "Works with Stripe, Razorpay, Adyen"].map(p => (
+        {["Accept UPI from any Indian bank", "Lowest rates possible", "Sub-2-second global settlement", "Works with Stripe, Razorpay, Adyen"].map(p => (
           <div key={p} style={{ display: "flex", gap: 10, fontFamily: "var(--font)", fontSize: 13, color: "var(--text2)", alignItems: "center", marginBottom: 8 }}>
             <span style={{ color: "var(--green)", fontWeight: 700, flexShrink: 0 }}>✓</span>{p}
           </div>
