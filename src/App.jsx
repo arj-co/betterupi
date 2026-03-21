@@ -569,7 +569,9 @@ const DemoPage = ({ onBack }) => {
   const [result, setResult] = useState(null);
   const [showAI, setShowAI] = useState(false);
   const [log, setLog] = useState([]);
-  const inr = Math.round(prod.price * USD_INR);
+  const baseInr = Math.round(prod.price * USD_INR);
+  const feeUSD = method === "cc" ? (prod.price * 0.029 + 0.3) : method === "dc" ? (prod.price * 0.015) : 0;
+  const inr = Math.round((prod.price + feeUSD) * USD_INR);
 
   const goQR = () => { if (method === "upi") setStage("qr"); };
   const simulate = async () => {
@@ -636,7 +638,7 @@ const DemoPage = ({ onBack }) => {
                 </div>
                 <div style={{ textAlign: "right" }}>
                   <div style={{ fontFamily: "var(--mono)", fontWeight: 700, fontSize: 18, color: "var(--blue)" }}>${prod.price}</div>
-                  <div style={{ fontFamily: "var(--mono)", fontSize: 9, color: "var(--text3)" }}>≈ ₹{inr.toLocaleString("en-IN")}</div>
+                  <div style={{ fontFamily: "var(--mono)", fontSize: 9, color: "var(--text3)" }}>≈ ₹{baseInr.toLocaleString("en-IN")}</div>
                 </div>
               </div>
             )}
@@ -673,10 +675,10 @@ const DemoPage = ({ onBack }) => {
                       </div>
                     ))}
                     <div style={{ background: "var(--bg2)", borderRadius: 10, padding: "12px 16px", margin: "16px 0" }}>
-                      {[["Subtotal", `$${prod.price}.00`], ["FX Fee", "₹0 (Free)"], ["Total", `₹${inr.toLocaleString("en-IN")} ($${prod.price})`]].map(([k, v], i) => (
+                      {[["Subtotal", `$${prod.price.toFixed(2)}`], ["Fee", method === "upi" ? "₹0 (Free)" : `$${feeUSD.toFixed(2)}`], ["Total", `₹${inr.toLocaleString("en-IN")} ($${(prod.price + feeUSD).toFixed(2)})`]].map(([k, v], i) => (
                         <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderBottom: i < 2 ? "1px solid var(--border)" : "none", fontFamily: i === 2 ? "var(--font)" : "var(--mono)", fontWeight: i === 2 ? 800 : 400, fontSize: i === 2 ? 15 : 12, color: "var(--text2)" }}>
                           <span>{k}</span>
-                          <span style={{ color: k === "FX Fee" ? "var(--green)" : i === 2 ? "var(--blue)" : "var(--text2)" }}>{v}</span>
+                          <span style={{ color: k === "Fee" && method === "upi" ? "var(--green)" : k === "Fee" ? "var(--red)" : i === 2 ? "var(--blue)" : "var(--text2)" }}>{v}</span>
                         </div>
                       ))}
                     </div>
