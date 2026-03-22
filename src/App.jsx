@@ -206,7 +206,7 @@ const Hero = ({ onPay }) => (
       </h1>
 
       <p style={{ fontFamily: "var(--font)", fontSize: "clamp(15px,1.6vw,18px)", color: "var(--text2)", maxWidth: 560, margin: "0 auto 42px", lineHeight: 1.75, fontWeight: 400 }}>
-        BetterUPI bridges India's UPI network to global merchants — with sub-2-second settlement, zero FX fees, and an agentic AI layer that routes every transaction intelligently.
+        BetterUPI bridges India's UPI network to global merchants — with sub-2-second settlement, zero FX fees, and a routing algorithm that routes every transaction intelligently.
       </p>
 
       {/* Live FX + note flip */}
@@ -257,7 +257,7 @@ const ProblemSolution = () => (
       <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
         <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--green)", letterSpacing: "0.1em", marginBottom: 14 }}>THE SOLUTION</div>
         <h2 style={{ fontFamily: "var(--font)", fontWeight: 800, fontSize: 34, lineHeight: 1.15, letterSpacing: "-0.03em", marginBottom: 16, color: "var(--text)" }}>BetterUPI <span className="grad-text">bridges the gap</span></h2>
-        <p style={{ fontFamily: "var(--font)", color: "var(--text2)", lineHeight: 1.75, marginBottom: 18, fontSize: 15 }}>We sit between payer and merchant — accepting UPI on one side, settling in local currency on the other. An agentic AI layer handles routing, fraud, and FX in milliseconds.</p>
+        <p style={{ fontFamily: "var(--font)", color: "var(--text2)", lineHeight: 1.75, marginBottom: 18, fontSize: 15 }}>We sit between payer and merchant — accepting UPI on one side, settling in local currency on the other. A routing algorithm handles routing, fraud, and FX in milliseconds.</p>
         {["Accept UPI from any Indian bank", "Lowest rates possible", "Sub-2-second global settlement", "Works with Stripe, Razorpay, Adyen"].map(p => (
           <div key={p} style={{ display: "flex", gap: 10, fontFamily: "var(--font)", fontSize: 13, color: "var(--text2)", alignItems: "center", marginBottom: 8 }}>
             <span style={{ color: "var(--green)", fontWeight: 700, flexShrink: 0 }}>✓</span>{p}
@@ -273,7 +273,7 @@ const HowItWorks = () => {
   const steps = [
     { n: "01", title: "Select BetterUPI", desc: "At any supported international checkout, choose BetterUPI instead of a credit card. No card details required.", icon: "🛒" },
     { n: "02", title: "Scan QR Code", desc: "A dynamic QR code appears showing the exact INR amount. Open GPay, PhonePe, Paytm or BHIM and scan.", icon: "📱" },
-    { n: "03", title: "AI Routes Your Payment", desc: "Our agentic AI validates the transaction, scores fraud risk, selects the optimal rail and locks the FX rate in under 100ms.", icon: "🧠" },
+    { n: "03", title: "Algorithm Routes Your Payment", desc: "Our routing algorithm validates the transaction, scores fraud risk, selects the optimal rail and locks the FX rate in under 100ms.", icon: "🔀" },
     { n: "04", title: "Instant Global Settlement", desc: "The merchant receives USD/EUR/GBP in their Stripe or Razorpay account within 1.2 seconds on average.", icon: "⚡" },
   ];
   return (
@@ -303,7 +303,7 @@ const HowItWorks = () => {
         {[
           { label: "Local UPI", sub: "India · ₹", icon: "📱", badge: "₹", bc: "var(--green)" },
           "arrow",
-          { label: "BetterUPI Gateway", sub: "Agentic AI Bridge", isLogo: true },
+          { label: "BetterUPI Gateway", sub: "Smart Routing Bridge", isLogo: true },
           "arrow",
           { label: "Global Merchant", sub: "USD / EUR / GBP", icon: "🌐", badge: "$", bc: "var(--amber)" },
         ].map((n, i) => {
@@ -388,7 +388,7 @@ Payload example:
   "amount_usd":  20.00,
   "fx_rate":     83.47,
   "merchant_id": "merch_xxx",
-  "ai_decision": {
+  "routing_decision": {
     "risk_score":  0.04,
     "route":       "card_rail",
     "fraud_check": "passed",
@@ -396,7 +396,7 @@ Payload example:
   }
 }` },
   {
-    title: "AI Decision Object", icon: "🧠", content: `Every transaction includes a transparent AI decision object:
+    title: "Routing Decision Object", icon: "🔀", content: `Every transaction includes a transparent routing decision object:
 
 {
   "risk_score":      0.12,   // 0.0 low → 1.0 high risk
@@ -404,7 +404,7 @@ Payload example:
   // card_rail | swift | local_transfer
   "fraud_check":     "passed",
   // passed | flagged | blocked
-  "latency_ms":      47,     // AI processing time
+  "latency_ms":      47,     // Algorithm processing time
   "fx_rate_locked":  83.47,  // Rate locked at initiation
   "routing_reason":  "Lowest latency route selected"
 }
@@ -495,7 +495,7 @@ const QRCode = ({ amount }) => {
   );
 };
 
-/* ── AI PIPELINE ── */
+/* ── ROUTING PIPELINE ── */
 const AI_STEPS = [
   { label: "Transaction Verification", detail: "Validating UPI ID, bank & amount integrity", icon: "🔍" },
   { label: "Fraud Detection", detail: "Scoring 40+ risk signals via ML model", icon: "🛡" },
@@ -508,7 +508,7 @@ const AIPipeline = ({ step, show, ai }) => (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <div style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--green)", animation: step >= 0 ? "pulse 1.5s infinite" : "none" }} />
-        <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--green)", letterSpacing: "0.07em" }}>AGENTIC AI PROCESSING</span>
+        <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--green)", letterSpacing: "0.07em" }}>ALGORITHM PROCESSING</span>
       </div>
       {show && ai && <span style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--text3)" }}>risk <span style={{ color: "var(--amber)" }}>{ai.risk_score}</span></span>}
     </div>
@@ -538,7 +538,7 @@ const AIPipeline = ({ step, show, ai }) => (
     </div>
     {show && ai && step > 1 && (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ marginTop: 12, padding: 13, background: "var(--bg2)", borderRadius: 8, border: "1px solid var(--border)" }}>
-        <div style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--text3)", marginBottom: 7, letterSpacing: "0.06em" }}>AI DECISION OBJECT</div>
+        <div style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--text3)", marginBottom: 7, letterSpacing: "0.06em" }}>ROUTING DECISION OBJECT</div>
         <pre style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--blue3)", lineHeight: 1.7, margin: 0 }}>{JSON.stringify(ai, null, 2)}</pre>
       </motion.div>
     )}
@@ -602,7 +602,7 @@ const DemoPage = ({ onBack }) => {
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--green)", animation: "pulse 1.5s infinite" }} />
             <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--green)" }}>SECURE · TLS 1.3</span>
             <button onClick={() => setShowAI(!showAI)} style={{ marginLeft: 6, background: showAI ? "rgba(67,97,238,0.10)" : "transparent", border: `1px solid ${showAI ? "var(--blue)" : "var(--border)"}`, color: showAI ? "var(--blue)" : "var(--text3)", padding: "5px 11px", borderRadius: 6, fontFamily: "var(--mono)", fontSize: 10, cursor: "pointer" }}>
-              {showAI ? "●" : "○"} AI Decisions
+              {showAI ? "●" : "○"} Routing Decisions
             </button>
           </div>
         </div>
@@ -780,7 +780,7 @@ const DemoPage = ({ onBack }) => {
                     <div style={{ fontFamily: "var(--mono)", fontWeight: 700, fontSize: 26, color: "var(--green)", marginBottom: 4 }}>₹{inr.toLocaleString("en-IN")} paid</div>
                     <div style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--text3)", marginBottom: 22 }}>Subscription Activated · {prod.name}</div>
                     <div style={{ background: "var(--bg2)", borderRadius: 10, padding: 16, textAlign: "left", marginBottom: 20 }}>
-                      {[["Transaction ID", result.txnId], ["Amount (INR)", `₹${result.amtINR.toLocaleString("en-IN")}`], ["Amount (USD)", `$${result.amtUSD}`], ["FX Rate", `${result.fxRate}`], ["Timestamp", result.timestamp], ["AI Risk Score", result.ai.risk_score], ["AI Latency", `${result.ai.latency_ms}ms`]].map(([k, v]) => (
+                      {[["Transaction ID", result.txnId], ["Amount (INR)", `₹${result.amtINR.toLocaleString("en-IN")}`], ["Amount (USD)", `$${result.amtUSD}`], ["FX Rate", `${result.fxRate}`], ["Timestamp", result.timestamp], ["Risk Score", result.ai.risk_score], ["Latency", `${result.ai.latency_ms}ms`]].map(([k, v]) => (
                         <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderBottom: "1px solid var(--border)", fontFamily: "var(--mono)", fontSize: 11 }}>
                           <span style={{ color: "var(--text3)" }}>{k}</span>
                           <span style={{ color: k === "Transaction ID" ? "var(--blue3)" : k.includes("Risk") ? "var(--green)" : "var(--text)" }}>{v}</span>
